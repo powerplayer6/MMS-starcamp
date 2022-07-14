@@ -1,6 +1,26 @@
 #include <stdio.h>
 #include <stdint.h>
 
+void setBit(uint64_t *mask, unsigned bit)
+{
+    *mask |= (1ULL<<bit);
+}
+
+void clearBit(uint64_t *mask, unsigned bit)
+{
+    *mask &= ~(1<<bit);
+}
+
+int checkBit(uint64_t mask, unsigned bit)
+{
+    return !!(mask&(1<<bit));
+}
+
+void flipBit(uint64_t *mask, unsigned bit)
+{
+    *mask ^= 1ULL << bit;
+}
+
 int main()
 {
     uint64_t attendance = 0;
@@ -14,22 +34,26 @@ int main()
         {
             printf("Student number (0-63): ");
             scanf("%d",&bit);
-            attendance=attendance|(1ULL<<bit);
+            //attendance=attendance|(1ULL<<bit);
+            setBit(&attendance, bit);
         } else if (option==2)
         {
             printf("Student number (0-63): ");
             scanf("%d",&bit);
-            attendance=attendance&~(1ULL<<bit);
+            //attendance=attendance&~(1ULL<<bit);
+            clearBit(&attendance, bit);
         } else if (option==3)
         {
             printf("Student number (0-63): ");
             scanf("%d",&bit);
-            printf("%d\n",!!(attendance&(1ULL<<bit)));
+            //printf("%d\n",!!(attendance&(1ULL<<bit)));
+            printf("%d\n",checkBit(attendance, bit));
         } else if (option==4)
         {
             printf("Student number (0-63): ");
             scanf("%d",&bit);
-            attendance ^= 1ULL << bit;
+            //attendance ^= 1ULL << bit;
+            flipBit(&attendance, bit);
             
         } else if (option==5)
         {
