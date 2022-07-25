@@ -1,0 +1,17 @@
+Create static library:
+ar -rcs libcomplib.a comparators.o
+
+Compile program with static library:
+gcc zad2.c -o zad2S -L . -lcomplib
+
+
+
+Create dynamic library:
+gcc -c -fPIC comparators.c -o dcomps.o
+gcc -shared -o libdcomplib.so dcomps.o
+
+Compile program with dynamic library:
+gcc zad2.c -o zad2D -L. -ldcomplib
+
+Add shared library path:
+export LD_LIBRARY_PATH=~/boris/Day11/zad2
