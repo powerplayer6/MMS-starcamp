@@ -1,0 +1,14 @@
+3.1.
+ps | cat | wc -l
+
+3.2.
+mkdir 'MMS C Camp' && cp *.c ./'MMS C Camp' && rm [0-9]*
+
+3.3.
+chmod 757 ~/Desktop/testFile
+
+3.4.
+cat source1.c source2.c | wc -l >> lineCount
+
+3.5.
+find . -name "*.c" | wc -l && find . -name "*.c" -exec cat '{}' \; >> code.txt && wc -l < code.txt && rm ./code.tx
